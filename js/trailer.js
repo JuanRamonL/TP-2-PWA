@@ -1,6 +1,8 @@
 // Variables globales
 const apiKey = 'AIzaSyBDeyLsm7ltINoz6olSCGuHRr2N-wqLL78'; 
 
+
+// Realiza una búsqueda en YouTube del tráiler de una película y muestra el primer resultado en un iframe.
 function searchTrailer() {
   var input = document.getElementById("searchInput").value;
   var container = document.getElementById("trailerContainer");

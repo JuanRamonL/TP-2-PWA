@@ -1,17 +1,22 @@
-// Variables globales
-const apiKey = '93469841'; // Reemplaza esto con tu propia API key de OMDB
+const apiKey = '93469841'; 
 let favoritos = [];
 
+
+//Realiza la búsqueda de películas y muestra los resultados en la interfaz de usuario. 
 function buscarPelicula() {
   var input = document.getElementById("searchInput").value;
   var url = "https://www.omdbapi.com/?apikey=" + apiKey + "&s=" + encodeURIComponent(input) + "&type=movie"; // Añadimos el parámetro "&type=movie" para buscar solo películas
 
   fetch(url)
     .then(response => response.json())
-    .then(data => mostrarPelicula(data.Search))
+    .then(data => {
+      mostrarPelicula(data.Search);
+      saveLastSearch(input); // Guardar la última búsqueda
+    })
     .catch(error => console.log(error));
 }
 
+// Muestra las películas encontradas en la interfaz de usuario.
 function mostrarPelicula(movies) {
   var results = document.getElementById("results");
   results.innerHTML = "";
@@ -58,20 +63,26 @@ function mostrarPelicula(movies) {
   }
 }
 
-
+// Agrega una película a la lista de favoritos y la guarda en el Local Storage.
 function addToFavorites(movie) {
   favoritos.push(movie);
   saveFavoritesToLocalStorage();
   console.log("Película agregada a favoritos:", movie);
 }
 
+// Guarda la lista de películas favoritas en el Local Storage.
 function saveFavoritesToLocalStorage() {
   localStorage.setItem("favoritos", JSON.stringify(favoritos));
 }
 
+// Muestra los detalles de una película utilizando el IMDb ID.
 function showMovieDetails(imdbID) {
-  // Aquí puedes implementar la lógica para mostrar los detalles de la película utilizando el imdbID
-  console.log("Detalles de la película:", imdbID);
+console.log("Detalles de la película:", imdbID);
+}
+
+// Guarda la última búsqueda realizada por el usuario en el Local Storage.
+function saveLastSearch(input) {
+  localStorage.setItem("lastSearch", input);
 }
 
 // Cargar favoritos desde el localStorage al iniciar la página
@@ -79,4 +90,9 @@ if (localStorage.getItem("favoritos")) {
   favoritos = JSON.parse(localStorage.getItem("favoritos"));
 }
 
-// Otro código y funciones relacionadas aquí...
+// Cargar la última búsqueda al iniciar la página
+if (localStorage.getItem("lastSearch")) {
+  var lastSearch = localStorage.getItem("lastSearch");
+  document.getElementById("searchInput").value = lastSearch;
+  buscarPelicula();
+}

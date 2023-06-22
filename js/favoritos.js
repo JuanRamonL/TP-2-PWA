@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", function() {
     loadFavoritesFromLocalStorage();
   });
   
+  // Carga y muestra las películas favoritas almacenadas en el Local Storage.
   function loadFavoritesFromLocalStorage() {
     var favoritesContainer = document.getElementById("favorites-container");
     favoritesContainer.innerHTML = "";
@@ -33,7 +34,7 @@ window.addEventListener("DOMContentLoaded", function() {
         removeButton.classList.add("btn", "btn-danger", "btn-small");
         removeButton.textContent = "Eliminar de Favoritos";
         removeButton.addEventListener("click", function() {
-          removeFavoriteFromLocalStorage(movie);
+          removeFavorite(movie);
           movieElement.remove();
         });
   
@@ -49,7 +50,8 @@ window.addEventListener("DOMContentLoaded", function() {
     }
   }
   
-  function removeFavoriteFromLocalStorage(movie) {
+  // Elimina una película de la lista de favoritos en el Local Storage.
+  function removeFavorite(movie) {
     var favorites = JSON.parse(localStorage.getItem("favoritos"));
   
     var updatedFavorites = favorites.filter(function(favorite) {
