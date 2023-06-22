@@ -42,7 +42,7 @@ function mostrarPelicula(movies) {
       movieTitle.textContent = title;
 
       var favoriteButton = document.createElement("button");
-      favoriteButton.classList.add("btn", "btn-primary");
+      favoriteButton.classList.add("btn", "btn-warning");
       favoriteButton.textContent = "Agregar a Favoritos";
       favoriteButton.addEventListener("click", function() {
         addToFavorites(movie);

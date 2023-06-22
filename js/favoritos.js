@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", function() {
         movieYear.textContent = year;
   
         var removeButton = document.createElement("button");
-        removeButton.classList.add("btn", "btn-primary", "btn-small");
+        removeButton.classList.add("btn", "btn-danger", "btn-small");
         removeButton.textContent = "Eliminar de Favoritos";
         removeButton.addEventListener("click", function() {
           removeFavoriteFromLocalStorage(movie);
