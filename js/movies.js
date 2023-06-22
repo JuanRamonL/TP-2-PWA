@@ -81,6 +81,7 @@ console.log("Detalles de la película:", imdbID);
 }
 
 // Guarda la última búsqueda realizada por el usuario en el Local Storage.
+
 function saveLastSearch(input) {
   localStorage.setItem("lastSearch", input);
 }
