@@ -1,5 +1,5 @@
-const CACHE_NAME = "Mis_pelis_app",
-urlCache= [
+const CACHE_NAME = "Mis_pelis_app";
+const urlCache = [
     '',
     './index.html',
     './trailers.html',
@@ -23,39 +23,38 @@ urlCache= [
 // Instalación del Service Worker
 self.addEventListener('install', event => {
     event.waitUntil(
-      caches.open(CACHE_NAME)
-        .then(cache => {
-          return cache.addAll(cacheFiles);
-        })
+        caches.open(CACHE_NAME)
+            .then(cache => {
+                return cache.addAll(urlCache);
+            })
     );
 });
 
 // Activación del Service Worker
 self.addEventListener('activate', event => {
     event.waitUntil(
-      caches.keys()
-        .then(cacheNames => {
-          return Promise.all(
-            cacheNames.map(cacheName => {
-              if (cacheName !== CACHE_NAME) {
-                return caches.delete(cacheName);
-              }
+        caches.keys()
+            .then(cacheNames => {
+                return Promise.all(
+                    cacheNames.map(cacheName => {
+                        if (cacheName !== CACHE_NAME) {
+                            return caches.delete(cacheName);
+                        }
+                    })
+                );
             })
-          );
-        })
     );
-  });
+});
 
 // Intercepción de solicitudes y gestión de la caché
 self.addEventListener('fetch', event => {
     event.respondWith(
-      caches.match(event.request)
-        .then(response => {
-          if (response) {
-            return response;
-          }
-          return fetch(event.request);
-        })
+        caches.match(event.request)
+            .then(response => {
+                if (response) {
+                    return response;
+                }
+                return fetch(event.request);
+            })
     );
-  });
-
+});
