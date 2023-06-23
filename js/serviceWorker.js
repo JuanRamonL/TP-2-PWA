@@ -1,11 +1,23 @@
-const cache_name = "Mis_pelis_app",
+const CACHE_NAME = "Mis_pelis_app",
 urlCache= [
-    '/estilos/estilos.css',
-    '/img/icon-512.png',
-    '/img/icon.png',
-    '/js/movies.js',
-    '/js/favoritos.js',
-    '/js/trailer.js',
+    '',
+    './index.html',
+    './trailers.html',
+    './favoritos.html',
+
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css',
+    'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css',
+
+    './estilos/estilos.css',
+
+    './img/icon-512.png',
+    './img/icon.png',
+
+    './js/movies.js',
+    './js/favoritos.js',
+    './js/trailer.js',
+    './js/serviceWorker.js',
+    './js/script.js'
 ];
 
 // Instalación del Service Worker

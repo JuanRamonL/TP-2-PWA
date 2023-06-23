@@ -25,9 +25,9 @@ function mostrarPelicula(movies) {
     movies.forEach(movie => {
       var title = movie.Title;
       var poster = movie.Poster;
-
+      
+      // Si la película no tiene imagen, no se renderiza
       if (poster === "N/A") {
-        // Si la película no tiene imagen, no se renderiza
         return;
       }
 
