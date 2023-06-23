@@ -1,6 +1,6 @@
 if ('serviceWorker' in navigator) {
 
-      navigator.serviceWorker.register('../js/serviceWorker.js')
+      navigator.serviceWorker.register('../serviceWorker.js')
         .then(reg => {
           console.log('Service Worker registrado:', reg);
         })
@@ -8,4 +8,6 @@ if ('serviceWorker' in navigator) {
           console.log('Error al registrar el Service Worker:', err);
         });
     ;
+  }else{
+    console.log('No soperta ServiceWorker')
   }
