@@ -1,3 +1,3 @@
-# TP-2-PWA-Juan_Ramon_lopez
-Buscador de peliculas  
+TP2 App buscador peliculas 
+Juan Ramon Lopez, DWN3B
 
