@@ -1,6 +1,6 @@
 {
-  "id": "Mis_pelis_app",
-  "name": "Mis pelis",
+  "id": "mis_pelis_app",
+  "name": "mis pelis",
   "short_name": "Mis pelis",
   "description": "Mis Pelis es una aplicación para buscar películas",
   "start_url": "/?utm_source=web_app_manifest",
