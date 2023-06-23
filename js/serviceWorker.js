@@ -1,13 +1,14 @@
 const CACHE_NAME = "mis_pelis_app";
 const urlCache = [
-    '../index.html',
-    '../trailers.html',
-    '../favoritos.html',
+    './',
+    './index.html',
+    './trailers.html',
+    './favoritos.html',
 
-    '../estilos/estilos.css',
+    './estilos/estilos.css',
 
-    '../img/icon-512.png',
-    '../img/icon.png',
+    './img/icon-512.png',
+    './img/icon.png',
 
     './js/movies.js',
     './js/favoritos.js',
@@ -20,30 +21,31 @@ const urlCache = [
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-        .then(cache=>{
-            return cache.addAll(urlCache)
-        .then(()=>self.skipWaiting())
-        })
-        .catch(err=>console.log('falló registrado de cache', err))
-    )
+            .then(cache => {
+                return cache.addAll(urlCache);
+            })
+            .then(() => self.skipWaiting())
+            .catch(error => console.log('Error al registrar el caché:', error))
+    );
 });
 
 // Activación del Service Worker
 self.addEventListener('activate', event => {
-    const cacheWhiteList=[CACHE_NAME]
+    const cacheWhitelist = [CACHE_NAME];
 
-    Event.waitUntil(
+    event.waitUntil(
         caches.keys()
-        .then(cachesNames=>{
-            cachesNames.map(cacheName=>{
-            if(cacheWhiteList.indexOf(cacheName)===-1){
-                return caches.delete(cacheName)
-            }    
+            .then(cacheNames => {
+                return Promise.all(
+                    cacheNames.map(cacheName => {
+                        if (cacheWhitelist.indexOf(cacheName) === -1) {
+                            return caches.delete(cacheName);
+                        }
+                    })
+                );
             })
-        })
-
-        .then(()=>self.clients.claim())
-    )
+            .then(() => self.clients.claim())
+    );
 });
 
 // Intercepción de solicitudes y gestión de la caché
