@@ -1,4 +1,4 @@
-const CACHE_NAME = "Mis_pelis_app";
+const CACHE_NAME = "mis_pelis_app";
 const urlCache = [
     '',
     './index.html',
