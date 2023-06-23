@@ -1,11 +1,11 @@
 const CACHE_NAME = "mis_pelis_app";
 const urlCache = [
-    './',
-    './index.html',
-    './trailers.html',
-    './favoritos.html',
+    '../',
+    '../index.html',
+    '../trailers.html',
+    '../favoritos.html',
 
-    './estilos/estilos.css',
+    '../estilos/estilos.css',
 
     './img/icon-512.png',
     './img/icon.png',
