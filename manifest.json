@@ -3,7 +3,7 @@
   "name": "Mis pelis",
   "short_name": "Mis pelis",
   "description": "Mis Pelis es una aplicación para buscar películas",
-  "start_url": "/?utm_source=web_app_manifest",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#e30613",
